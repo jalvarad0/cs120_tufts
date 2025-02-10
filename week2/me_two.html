@@ -1,17 +1,33 @@
-<!-- comment exmaple. Keep here for later.  -->
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/styles.css" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <title>me_two</title>
+    <center><h1>Juan Alvarado</h1></center>
+    <style>
+        .food-container {
+            max-width: 600px;
+            font-family: Arial, sans-serif;
+            line-height: 1.5;
+        }
+
+        .food-image {
+            float: left; 
+            margin-right: 15px; 
+            width: 200px; 
+            border-radius: 10px; 
+        }
+        .book-image{
+            width: 80px;
+            height: 80px;
+        }
+        .clearfix {
+            clear: both;
+        }
+    </style>
 
 </head>
 <body>
-    <h1 class="name_header"> Juan Alvarado </h1>
     <p>
         I recently took a getaway trip to New York to visit my friends for New Years!
         This was a special trip because I was able to see NY for the first time while
@@ -21,36 +37,30 @@
     <p>
         So you want to know my 3 favorite pet names huh?
     </p>
-    <div class="list_container">
-        <ul class="class_box" >
-            <li>Olive</li>
-            <li>Ben</li>
-            <li>Obi</li>
-        </ul>
-    </div>
-    
-    <!-- Food image  -->
-    <p>What is my favorite restaurant you ask: 
-        <a href="https://phopasteurboston.net/" target="_blank">phopasteurboston</a>
+    <ul>
+        <li>Olive</li>
+        <li>Ben</li>
+        <li>Obi</li>
+    </ul>
+    <p> 
+        What is my favorite restaurant you ask: <a href="https://phopasteurboston.net/" target="_blank">phopasteurboston</a>
     </p>
-
-    <div class="food-section">
-        <div class="food-image"></div>
-        <div class="food-text">
-            <p>One can never go wrong with pho. Especially in the winter time. Personally,
-               I think what makes pho so great is the broth. If you get the broth right,
-               then I consider you a great pho spot. Anyone can get the noodles right but getting
-               the broth right is HARD!
+    <div class="food-container">
+        <img src="images/pho.jpg" alt="My Favorite Food" class="food-image">
+        <div>
+            <p>
+                One can never go wrong with pho. Especially in the winter time. Personally
+                I think what makes pho so great is the broth. If you get the broth right,
+                then I consider you a great pho spot. Anyone can get the noodles right but getting
+                the broth right is HARD!
             </p>
         </div>
     </div>
-
-    <!-- Book table  -->
     <div class="clearfix"></div>
     <p>
         And lastly, you want my favorite books:
     </p>
-    <table class="book_table">
+    <table>
         <tr>
             <td>Vicious</td>
             <td><img src="images/vicious.jpg" alt="Vicious" class="book-image"></td>
@@ -76,48 +86,5 @@
             <td>A biography of Albert Einstein.</td>
         </tr>
     </table>
-
-    <!-- Generating form with table look -->
-     <div class="form_container">
-        <form action="/action_page.php" id="infoform">
-            <fieldset>
-                <legend>Tell us about you :D</legend>
-                <table border=".5">
-                    <tr>
-                        <td><label for=fname>First Name:</label></td>
-                        <td><input type="text" id="fname" required></td>
-                    </tr>
-                    <tr>
-                        <td><label for=lname>Last Name:</label></td>
-                        <td><input type="text" id="lname" required></td>
-                    </tr>
-                    <tr>
-                        <td><label for="city">City:</label></td>
-                        <td><input type="text" id="city" required></td>
-                    </tr>
-                    <tr>
-                        <td><label for="state">State:</label></td>
-                        <td>
-                            <select class="state-select" name="state" id="state">
-                                <option value ="Choose a state"> Choose a state</option>
-                                <option value="California">California</option>
-                                <option value="Massachusetts">Massachusetts</option>
-                                <option value="New York">New York</option>
-                                <option value="Colorado">Colorado</option>
-                            </select>
-                        </td>
-                    </tr>
-                </table>
-            </fieldset>
-        </form>
-    </div> 
-
-    <!-- Adding the social media icons -->
-    <div class="fb_and_x_icons">
-        <a href="https://facebook.com" target="_blank" class="fa fa-facebook"></a>
-        <a href="https://twitter.com" target="_blank" class="fa fa-twitter"></a>
-    </div>
-
-
 </body> 
 </html>
