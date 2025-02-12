@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content = "width=device-width, initial-scale=1.0">
+    <title> Problem 6 </title>
+</head>
+<body>
+        <div id = "answer"></div>
+        <script>
+
+                function count(num, array) {
+                        let total = 0;
+                        for (let i = 0; i <= array.length; i++){
+                                if (array[i] < num){
+                                        total ++;
+                                }
+                        }
+                        let output = document.getElementById("answer");
+                        output.innerHTML = total;
+                }
+
+                function test_count() {
+                        // Declare array
+                        let arr = [2, 44, 20, 18, -2, 100];
+                        let compare_val = 50;
+                        count(compare_val, arr);
+                }
+                test_count();
+        </script>
+
+</body>
+</html>

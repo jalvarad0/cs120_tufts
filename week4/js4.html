@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Problem 4 </title>
+</head>
+<body onload = "odd_and_sum()">
+        <p id = "odd_nums"></p>
+        <p id = "total_sum"></p>
+        <script>
+            function odd_and_sum() {
+                //We first try to get user input and keep trying until they give us something
+                let odds = [];
+                let sum = 0;
+                let num1 = parseInt(prompt("First Number: "));
+                let num2 = parseInt(prompt("Second Number: "));
+                while (num2 <= num1) {
+                        num2 = parseInt(prompt("Please enter a number larger than the first one: "));
+                }
+
+                for (let i = num1; i <= num2; i++){
+                        if (i % 2 === 1){
+                                odds.push(i);
+                        }
+                        sum += i;
+                }
+                document.getElementById("odd_nums").innerText = `Here are the odds within range ${num1} and ${num2} (inclusive): ${odds.join(", ")}`;
+                document.getElementById("total_sum").innerText = `Here is sum: ${sum}`;
+            }
+        </script>
+
+</body>
+</html>

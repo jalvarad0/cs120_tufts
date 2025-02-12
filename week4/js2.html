@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Problem 2 </title>
+</head>
+<body onload = "FtoC(), CtoF()">
+        <script>
+            function FtoC() {
+                //We first try to get user input and keep trying until they give us something
+                let fahrenheit = prompt("Enter Temperature In Fahrenheit: ");
+                while (fahrenheit.trim() == "" || !fahrenheit) {
+                    fahrenheit = prompt("Enter Temperature In Fahrenheit: ");
+                }
+                
+                //Let's convert and output
+                let celius = (fahrenheit - 32) * 5 / 9;
+                alert("Converted to Celcius: " + parseFloat(celius));
+            }
+
+            //Now let's go the other way around
+            function CtoF() {
+                //We first try to get user input and keep trying until they give us something
+                let celcius = prompt("Enter Temperature In Celcius: ");
+                while (celcius.trim() == "" || !celcius) {
+                    celcius = prompt("Enter Temperature In Celcius: ");
+                }
+                
+                //Let's convert and output
+                let fahrenheit = ((celcius * 9) / 5) + 32;
+                alert("Converted to Fahrenheit: " + parseFloat(fahrenheit));
+            }
+        </script>
+
+</body>
+</html>

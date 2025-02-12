@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Problem 3 </title>
+</head>
+<body onload = "compare_nums()">
+        <script>
+            function compare_nums() {
+                //We first try to get user input and keep trying until they give us something
+                let num1 = parseFloat(prompt("First Number "));
+                let num2 = parseFloat(prompt("Second Number "));
+                if (num1 >= num2) {
+                        alert(num2 + "," + num1);
+                } else {
+                        alert(num1 + "," + num2);
+                }
+            }
+        </script>
+
+</body>
+</html>

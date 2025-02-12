@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Problem 1 </title>
+</head>
+<body onload = "problem1_a(), problem1_b()">
+    <p id = "fullname"></p>
+    <p id = "num_kids"></p>
+    <script>
+        function problem1_a() {
+            let firstname = prompt("What is your first name? ");
+            let lastname = prompt("What is your last name? ");
+            let output = document.getElementById("fullname");
+
+            // Check if input is not empty
+            if ((!firstname || firstname.trim() === "") || (!lastname || lastname.trim() === "")) {
+                output.textContent = "INCORRECT INPUT, TRY AGAIN";
+            } else {
+                output.textContent = "Your name is " + firstname + " " + lastname;
+            }
+        }
+        function problem1_b() {
+            let numkids = parseInt(prompt("How many kids do you have? "));
+            let output2 = document.getElementById("num_kids");
+
+            // Check if input is not empty
+            if (isNaN(numkids)) {
+                output2.textContent = "You didn't enter how many kids you have and broke me. WHYYYYYY?!?";
+            } else if (numkids === 0) {
+                output2.textContent = "You have no children";
+            } else if (numkids === 1){
+                output2.textContent = `You have ${numkids} child.`;
+            } else {
+                output2.textContent = `You have ${numkids} children.`;
+            }
+        }
+    </script>
+
+</body>
