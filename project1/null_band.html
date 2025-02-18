@@ -1,5 +1,3 @@
-<!-- comment exmaple. Keep here for later.  -->
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,40 +5,71 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Null Band</title>
     <link rel="stylesheet" href="css/styles.css" />
-
 </head>
 <body>
-<!-- Header Section Start  -->
-    <div class = "hero">
-        <div class = "header_container">
-            <h1> NULL </h1>
-        </div>
-        
-        <!-- Button that gives us options to redirect to other pages  -->
-        <div class="menu-container">
-            <button class="circle-button main-button" onclick="toggleMenu()">+</button>
 
-            <!-- Options container here -->
+    <!-- Header Section Start -->
+    <header class="hero">
+        <div class="header_container">
+            <h1>NULL</h1>
+        </div>
+
+        <!-- Navigation Button Menu -->
+        <nav class="menu-container" role="navigation">
+            <button class="circle-button main-button" onclick="toggleMenu()" aria-label="Toggle Menu">+</button>
+
+            <!-- Navigation Links -->
             <a href="null_band.html" class="circle-button option option1" title="Home">Home</a>
-            <a href="contact.html" class="circle-button option option3" title="Contact">Contact</a>
-            <a href="meet_band.html" class="circle-button option option2" title="About">Merch</a>
+            <a href="contact.html" class="circle-button option option2" title="Contact">Contact</a>
+            <a href="meet_band.html" class="circle-button option option3" title="About">Merch</a>
             <a href="schedule.html" class="circle-button option option4" title="Services">Schedule</a>
-        </div>
-    </div>
+        </nav>
+    </header>
+    <!-- Header Section End -->
 
+    <!-- JavaScript for Menu Toggle -->
     <script>
-        function toggleMenu() {
-            document.querySelector(".menu-container").classList.toggle("active");
-        }
+        document.addEventListener("DOMContentLoaded", function () {
+            function toggleMenu() {
+                document.querySelector(".menu-container").classList.toggle("active");
+            }
+            window.toggleMenu = toggleMenu;
+        });
     </script>
-<!-- Header Section End  -->
-        
-    <!-- Adding the social media icons -->
-    <div class="fb_and_x_icons">
-        <a href="https://facebook.com" target="_blank" class="fa fa-facebook"></a>
-        <a href="https://twitter.com" target="_blank" class="fa fa-twitter"></a>
-    </div>
 
+    <!-- Content Container with Three Boxes -->
+    <section class="content-container">
+        <!-- Box 1: The Band -->
+        <div class="box box1">
+            <div class="image-container">
+                <p class="box-title">The Band</p>
+                <img src="images/mac-sabbath.webp" alt="Image of the Band Mac Sabbath">
+            </div>
+        </div>
 
-</body> 
+        <!-- Box 2: Twitch Link -->
+        <div class="box box2">
+            <a href="https://clips.twitch.tv/AttractiveAgreeableOxNononoCat-rI2mENW1153C9KU-" 
+               target="_blank" class="twitch-link" aria-label="Watch on Twitch">
+                On Twitch
+            </a>
+        </div>
+
+        <!-- Box 3: Merch -->
+        <div class="box box3">
+            <div class="image-container">
+                <p class="box-title">Merch</p>
+                <img src="images/mach_merch.webp" alt="Image of band merchandise">
+            </div>
+        </div>
+    </section>
+    <!-- Content Container END -->
+
+    <!-- Social Media Icons -->
+    <footer class="fb_and_x_icons">
+        <a href="https://facebook.com" target="_blank" class="fa fa-facebook" aria-label="Facebook"></a>
+        <a href="https://twitter.com" target="_blank" class="fa fa-twitter" aria-label="Twitter"></a>
+    </footer>
+
+</body>
 </html>
