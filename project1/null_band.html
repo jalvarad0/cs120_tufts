@@ -1,0 +1,46 @@
+<!-- comment exmaple. Keep here for later.  -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Null Band</title>
+    <link rel="stylesheet" href="css/styles.css" />
+
+</head>
+<body>
+<!-- Header Section Start  -->
+    <div class = "hero">
+        <div class = "header_container">
+            <h1> NULL </h1>
+        </div>
+        
+        <!-- Button that gives us options to redirect to other pages  -->
+        <div class="menu-container">
+            <button class="circle-button main-button" onclick="toggleMenu()">+</button>
+
+            <!-- Options container here -->
+            <a href="null_band.html" class="circle-button option option1" title="Home">Home</a>
+            <a href="contact.html" class="circle-button option option3" title="Contact">Contact</a>
+            <a href="meet_band.html" class="circle-button option option2" title="About">Merch</a>
+            <a href="schedule.html" class="circle-button option option4" title="Services">Schedule</a>
+        </div>
+    </div>
+
+    <script>
+        function toggleMenu() {
+            document.querySelector(".menu-container").classList.toggle("active");
+        }
+    </script>
+<!-- Header Section End  -->
+        
+    <!-- Adding the social media icons -->
+    <div class="fb_and_x_icons">
+        <a href="https://facebook.com" target="_blank" class="fa fa-facebook"></a>
+        <a href="https://twitter.com" target="_blank" class="fa fa-twitter"></a>
+    </div>
+
+
+</body> 
+</html>

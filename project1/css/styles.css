@@ -1,0 +1,115 @@
+/*********************** Header Start **********************/
+/* Header Background */
+.hero {
+    position: relative;
+    width: 100%;
+    height: 200px;
+    background: url('../images/snow.jpg') no-repeat center center/cover;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding-top: 20px;
+}
+
+/* Container for the name of the band */
+.header_container {
+    background: rgba(0, 0, 0, 0.7);
+    color: white;
+    padding: 10px 20px;
+    border-radius: 10px;
+    text-align: center;
+    font-family: Arial, sans-serif;
+}
+
+/* Navigation Button */
+/* Menu Container */
+.menu-container {
+    margin-top: 20px; /* Space below the NULL header */
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    position: relative;
+}
+
+/* Main Circular Button */
+.circle-button {
+    width: 50px; /* Slightly larger to fit text */
+    height: 50px;
+    background-color: white;
+    color: black;
+    text-align: center;
+    font-size: 12px; /* Smaller font to fit text */
+    font-weight: bold;
+    text-decoration: none;
+    border-radius: 50%;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
+    transition: background 0.3s ease, transform 0.3s ease;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 5px;
+    line-height: 1.1;
+}
+
+/* Adjust text to fit inside the circle */
+.circle-button span {
+    display: block;
+    text-align: center;
+    word-wrap: break-word;
+    overflow: hidden;
+    white-space: normal;
+}
+
+/* Main Button */
+.main-button {
+    background-color: #f1c40f;
+    font-size: 24px;
+}
+
+/* Options (Hidden by Default) */
+.option {
+    position: absolute;
+    top: 0;
+    transform: translateX(0px); /* Start position */
+    opacity: 0;
+    visibility: hidden;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+/* When Active, Show Options Horizontally */
+.menu-container.active .option1 {
+    transform: translateX(-90px); /* Move Left */
+    opacity: 1;
+    visibility: visible;
+}
+.menu-container.active .option2 {
+    transform: translateX(-180px); /* Move Further Left */
+    opacity: 1;
+    visibility: visible;
+}
+.menu-container.active .option3 {
+    transform: translateX(90px); /* Move Right */
+    opacity: 1;
+    visibility: visible;
+}
+.menu-container.active .option4 {
+    transform: translateX(180px); /* Move Further Right */
+    opacity: 1;
+    visibility: visible;
+}
+    
+/* Button Hover Effect */
+.circle-button:hover {
+    background-color: #e67e22;
+    transform: scale(1.1);
+}
+
+/*********************** Header END **********************/
+
+/************ Container Below Header Start ***************/
+
+/************ Container Below Header End ***************/
