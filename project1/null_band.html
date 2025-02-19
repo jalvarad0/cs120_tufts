@@ -3,6 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+
     <title>Null Band</title>
     <link rel="stylesheet" href="css/styles.css" />
 </head>
@@ -21,8 +23,8 @@
             <!-- Navigation Links -->
             <a href="null_band.html" class="circle-button option option1" title="Home">Home</a>
             <a href="contact.html" class="circle-button option option2" title="Contact">Contact</a>
-            <a href="meet_band.html" class="circle-button option option3" title="About">Merch</a>
-            <a href="schedule.html" class="circle-button option option4" title="Services">Schedule</a>
+            <a href="meet_band.html" class="circle-button option option3" title="The Band">The Band</a>
+            <a href="schedule.html" class="circle-button option option4" title="Schdule">Schedule</a>
         </nav>
     </header>
     <!-- Header Section End -->
@@ -65,11 +67,45 @@
     </section>
     <!-- Content Container END -->
 
+    <!-- Posting a comment on website START -->
+     <!-- New Section: Post a Note for the Band -->
+    <section class="notes-section">
+        <h2>Leave a Note for the Band</h2>
+        <textarea id="noteInput" placeholder="Type your message here..."></textarea>
+        <button onclick="postNote()">Post Note</button>
+
+        <h3>Fan Messages:</h3>
+        <ul id="notesList"></ul>
+        <script>
+            function postNote() {
+                let noteInput = document.getElementById("noteInput");
+                let noteText = noteInput.value.trim();
+            
+                if (noteText === "") {
+                    alert("Please enter a message before posting!");
+                    return;
+                }
+            
+                // Create a new list item
+                let noteItem = document.createElement("li");
+                noteItem.textContent = noteText;
+            
+                // Append the note to the list
+                document.getElementById("notesList").appendChild(noteItem);
+            
+                // Clear input field after posting
+                noteInput.value = "";
+            }
+        </script>
+    </section>
+
+    <!-- Posting a comment on website End -->
+
     <!-- Social Media Icons -->
-    <footer class="fb_and_x_icons">
-        <a href="https://facebook.com" target="_blank" class="fa fa-facebook" aria-label="Facebook"></a>
-        <a href="https://twitter.com" target="_blank" class="fa fa-twitter" aria-label="Twitter"></a>
-    </footer>
+    <div class="fb_and_x_icons">
+        <a href="https://www.facebook.com/macsabbath/" target="_blank" class="fa-brands fa-facebook"></a>
+        <a href="https://x.com/macsabbath" target="_blank" class="fa-brands fa-x-twitter"></a>
+    </div>
 
 </body>
 </html>
