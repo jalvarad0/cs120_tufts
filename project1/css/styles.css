@@ -74,28 +74,28 @@
     visibility: hidden;
 }
 
-/* When Active, Show Options Horizontally */
+/* When Active, Show Options Responsively */
 .menu_container.active .option1 {
-    transform: translateX(60px); 
+    transform: translateX(12vw);
     opacity: 1;
     visibility: visible;
 }
 .menu_container.active .option2 {
-    transform: translateX(130px); 
+    transform: translateX(24vw); 
     opacity: 1;
     visibility: visible;
 }
 .menu_container.active .option3 {
-    transform: translateX(200px); 
+    transform: translateX(36vw);
     opacity: 1;
     visibility: visible;
 }
 .menu_container.active .option4 {
-    transform: translateX(270px); 
+    transform: translateX(48vw);
     opacity: 1;
     visibility: visible;
 }
-    
+
 /* Button Hover Effect */
 .circle_button:hover {
     background-color: #e67e22;
