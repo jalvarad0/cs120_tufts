@@ -11,8 +11,8 @@
     <h2 style="text-align: center;">Contact Us</h2>
 
     <!-- User Form -->
-    <div class="form-container">
-        <form id="contactForm">
+    <div class="form_container">
+        <form id="contact_form">
             <label for="name">Full Name:</label>
             <input type="text" id="name" name="name" placeholder="Enter your full name" required>
 
@@ -28,25 +28,25 @@
             <button type="submit">Submit</button>
         </form>
 
-        <!-- Display Form Submission Result -->
-        <div id="formResult"></div>
+        <!-- Lets place the form here.  -->
+        <div id="result"></div>
     </div>
 
     <script>
-        document.getElementById("contactForm").addEventListener("submit", function(event) {
-        event.preventDefault(); // Prevent default form submission
+        document.getElementById("contact_form").addEventListener("submit", function(event) {
+            event.preventDefault(); // We need this so page doesn't reload
 
-            // Get user inputs
+            // Lets first grab user input
             let name = document.getElementById("name").value;
             let email = document.getElementById("email").value;
             let phone = document.getElementById("phone").value;
             let message = document.getElementById("message").value;
 
-            // Get result div properly
-            let resultDiv = document.getElementById("formResult");
+            // Lets now grab the element where we want to post our results
+            let result_div = document.getElementById("result");
 
-            // Display the submitted information
-            resultDiv.innerHTML = `
+            // Let's now format how we want to displa what they entered
+            result_div.innerHTML = `
                 <h3>Submitted Information:</h3>
                 <p><strong>Name:</strong> ${name}</p>
                 <p><strong>Email:</strong> ${email}</p>
@@ -54,11 +54,11 @@
                 <p><strong>Message:</strong> ${message}</p>
             `;
 
-            // Make sure result div is visible
-            resultDiv.style.display = "block";
+            // We put this here to make sure that our result is displayed
+            result_div.style.display = "block";
 
             // Clear input fields after submission
-            document.getElementById("contactForm").reset();
+            document.getElementById("contact_form").reset();
         });
     </script>
 

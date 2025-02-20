@@ -1,8 +1,8 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang = "en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset = "UTF-8">
+    <meta name = "viewport" content = "width = device-width, initial-scale = 1.0">
     <title>Band Tour Schedule</title>
     <style>
         table {
@@ -16,14 +16,15 @@
             padding: 10px;
         }
         th {
-            background-color: #e67e22;
+            background-color: #787878;
         }
     </style>
 </head>
 <body>
 
-    <h2 style="text-align:center">Band Tour Schedule</h2>
-    <table id="schedule_table">
+    <h2 style = "text-align:center" > Band Tour Schedule</h2>
+    
+    <table id = "schedule_table">
         <thead>
             <tr>
                 <th>Date</th>
@@ -33,49 +34,38 @@
             </tr>
         </thead>
         <tbody>
-                <!-- This is where the entries from the table will go -->
+            <tr>
+                <td>March 10, 2025</td>
+                <td>Los Angeles</td>
+                <td>CA</td>
+                <td>Hollywood Bowl</td>
+            </tr>
+            <tr>
+                <td>April 15, 2025</td>
+                <td>Boston</td>
+                <td>MA</td>
+                <td>Citizens Opera House</td>
+            </tr>
+            <tr>
+                <td>May 22, 2025</td>
+                <td>New York</td>
+                <td>NY</td>
+                <td>Madison Square Garden</td>
+            </tr>
+            <tr>
+                <td>June 5, 2025</td>
+                <td>Oakland</td>
+                <td>CA</td>
+                <td>Fox Theater</td>
+            </tr>
+            <tr>
+                <td>July 18, 2025</td>
+                <td>San Francisco</td>
+                <td>CA</td>
+                <td>Chase Center</td>
+            </tr>
         </tbody>
     </table>
-
-    <script>
-        // Sample array of tuples: (date, (city, state), venue)
-        const tourDates = [
-            ["March 10, 2025", ["Los Angeles", "CA"], "Hollywood Bowl"],
-            ["April 15, 2025", ["Boston", "MA"], "Citizens Opera House"],
-            ["May 22, 2025", ["New York", "NY"], "Madison Square Garden"],
-            ["June 5, 2025", ["Oakland", "CA"], "Fox Theater"],
-            ["July 18, 2025", ["San Francisco", "CA"], "Chase Center"]
-        ];
-
-        function createSchedule(data) {
-            let tableBody = document.getElementById("schedule_table").getElementsByTagName("tbody")[0];
-
-            data.forEach(([date, [city, state], venue]) => {
-                let row = document.createElement("tr");
-
-                let dateCell = document.createElement("td");
-                dateCell.textContent = date;
-                row.appendChild(dateCell);
-
-                let cityCell = document.createElement("td");
-                cityCell.textContent = city;
-                row.appendChild(cityCell);
-
-                let stateCell = document.createElement("td");
-                stateCell.textContent = state;
-                row.appendChild(stateCell);
-
-                let venueCell = document.createElement("td");
-                venueCell.textContent = venue;
-                row.appendChild(venueCell);
-
-                tableBody.appendChild(row);
-            });
-        }
-
-        // Populate the table on call
-        createSchedule(tourDates);
-    </script>
 
 </body>
 </html>

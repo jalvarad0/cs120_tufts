@@ -1,136 +1,81 @@
-/*********************** Header Start **********************/
-/* Header Background */
+/*********************** HEADER START **********************/
 .hero {
     position: relative;
     width: 100%;
     height: 200px;
     background: url('../images/snow.jpg') no-repeat center center/cover;
     display: flex;
-    flex-direction: column;
     justify-content: center;
     align-items: center;
-    padding-top: 20px;
 }
 
-/* Container for the name of the band */
+/* Band name container*/
 .header_container {
-    background: rgba(0, 0, 0, 0.7);
+    background: black;
     color: white;
     padding: 10px 20px;
     border-radius: 10px;
     text-align: center;
-    font-family: Arial, sans-serif;
+    font-family: "Metal Mania", serif;
+    font-weight: 400;
 }
 
-/* Navigation Button */
-/* Menu Container */
-.menu-container {
-    margin-top: 20px; 
-    display: flex;
-    align-items: center;
-    gap: 15px;
-    position: relative;
-}
-
-/* Main Circular Button */
-.circle-button {
+/*********************** MENU BUTTON **********************/
+.menu_container {
     position: fixed;
     bottom: 20px;
     left: 20px;
-    width: 50px;
-    height: 50px;
-    background-color: white;
-    color: black;
+    display: flex;
+    gap: 10px;
+    z-index: 1000;
+}
+
+/* Circular Buttons (Main + Options) */
+.circle_button, .twitch_link, button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: none;
+    border-radius: 50%;
     text-align: center;
     font-size: 12px;
     font-weight: bold;
     text-decoration: none;
-    border-radius: 50%;
-    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
     transition: background 0.3s ease, transform 0.3s ease;
-    border: none;
     cursor: pointer;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
+}
+
+.circle_button {
+    width: 50px;
+    height: 50px;
+    background: white;
+    color: black;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
     padding: 5px;
-    line-height: 1.1;
 }
 
-/* Adjust text to fit inside the circle */
-.circle-button span {
-    display: block;
-    text-align: center;
-    word-wrap: break-word;
-    overflow: hidden;
-    white-space: normal;
-}
-
-/* Main Button */
-.main-button {
-    background-color: #f1c40f;
+.main_button {
+    background: #f1c40f;
     font-size: 24px;
 }
 
-/* Options (Hidden by Default) */
 .option {
-    position: fixed; 
-    bottom: 20px; 
-    left: 20px; 
-    width: 50px;
-    height: 50px;
-    background-color: white;
-    color: black;
-    text-align: center;
-    font-size: 12px;
-    font-weight: bold;
-    text-decoration: none;
-    border-radius: 50%;
-    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
-    transition: transform 0.3s ease, opacity 0.3s ease;
-    border: none;
-    cursor: pointer;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    opacity: 0;
     visibility: hidden;
 }
 
-/* When Active, Show Options Horizontally */
-.menu-container.active .option1 {
-    transform: translateX(90px); 
-    opacity: 1;
+.menu_container.active .option {
     visibility: visible;
-}
-.menu-container.active .option2 {
-    transform: translateX(180px); 
     opacity: 1;
-    visibility: visible;
+    transform: translateX(90px);
 }
-.menu-container.active .option3 {
-    transform: translateX(270px); 
-    opacity: 1;
-    visibility: visible;
-}
-.menu-container.active .option4 {
-    transform: translateX(360px); 
-    opacity: 1;
-    visibility: visible;
-}
-    
-/* Button Hover Effect */
-.circle-button:hover {
-    background-color: #e67e22;
+
+.circle_button:hover, button:hover {
+    background: #e67e22;
     transform: scale(1.1);
 }
 
-/*********************** Header END **********************/
-
-/************ Container Below Header Start ***************/
-/* Main Container */
-.content-container {
+/*********************** CONTENT SECTION **********************/
+.content_container {
     display: flex;
     justify-content: space-evenly;
     align-items: center;
@@ -139,15 +84,15 @@
     gap: 20px;
 }
 
-/* Individual Boxes */
+/* Boxes with Titles */
 .box {
-    width: 300px; 
-    height: 300px; 
-    background: rgba(0, 0, 0, 0.8);
+    width: 300px;
+    height: 300px;
+    background: black;
     color: white;
     text-align: center;
     border-radius: 10px;
-    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.3);
+    box-shadow: 0px 4px 6px black;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -155,243 +100,143 @@
     overflow: hidden;
 }
 
-/* Image Container */
-.image-container {
-    width: 100%;
-    height: 100%;
-}
-
-/* Box 1 and Box 3 Images */
 .box img {
-    width: 100%;
-    height: 100%;
     object-fit: cover;
-    border-radius: 10px;
-    display: block;
 }
 
-/* Title on Top of Image */
-.box-title {
+.box_title {
     position: absolute;
     top: 10px;
     left: 50%;
     transform: translateX(-50%);
-    background: rgba(0, 0, 0, 0.6);
-    color: white;
     padding: 5px 10px;
     font-size: 25px;
     font-weight: bold;
-    border-radius: 5px;
 }
 
-/* Twitch Box */
-.box2 {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-/* Twitch Link */
-.twitch-link {
-    display: inline-block;
+/*********************** TWITCH BUTTON **********************/
+.twitch_link {
+    width: 80%;
+    padding: 15px 20px;
     background: #9146FF;
     color: white;
-    padding: 15px 20px;
-    border-radius: 5px;
-    text-decoration: none;
-    font-weight: bold;
-    transition: background 0.3s ease;
     font-size: 18px;
-    text-align: center;
-    width: 80%;
+    border-radius: 5px;
 }
 
-.twitch-link:hover {
+.twitch_link:hover {
     background: #772CE8;
 }
 
-/************ Container Below Header End ***************/
-
-/*********************** Notes Section Start **********************/
-.notes-section {
+/*********************** NOTES SECTION **********************/
+.notes_section {
     width: 60%;
     margin: 40px auto;
     padding: 20px;
-    background: rgba(0, 0, 0, 0.8);
+    background: black;
     color: white;
     text-align: center;
     border-radius: 10px;
-    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.3);
+    box-shadow: 0px 4px 6px black;
 }
 
-.notes-section h2 {
+.notes_section h2 {
     font-size: 24px;
     margin-bottom: 10px;
 }
 
 textarea {
-    width: 100%;
+    width: 90%;
     height: 100px;
     border-radius: 5px;
     padding: 10px;
     font-size: 16px;
 }
 
-button {
-    margin-top: 10px;
-    padding: 10px 15px;
-    font-size: 16px;
-    border: none;
-    border-radius: 5px;
-    background: #f1c40f;
-    cursor: pointer;
-    transition: background 0.3s ease;
-}
-
-button:hover {
-    background: #e67e22;
-}
-
-#notesList {
-    list-style: none;
-    padding: 0;
-    margin-top: 15px;
-}
-
-#notesList li {
-    background: white;
-    color: black;
-    padding: 10px;
-    margin-top: 5px;
-    border-radius: 5px;
-}
-
-/*********************** Notes Section End **********************/
-
-/*********************** Icons Section Start **********************/
-/* Handle adding icons for fb and x */
+/*********************** SOCIAL MEDIA ICONS **********************/
 .fb_and_x_icons {
     position: fixed;
     bottom: 20px;
     right: 20px;
-    padding: 10px;
     display: flex;
-    background-color: #f1c40f;
-    flex-direction: row;
+    background: #f1c40f;
     gap: 10px;
     font-size: 25px;
-    text-decoration: none;
+    padding: 10px;
 }
+
 .fa:hover {
     opacity: 0.7;
 }
-/* Facebook */
-.fa-facebook {
-    background: #0251fc;
-    color: white;
-}
-  
-/* x */
-.fa-x {
-    background: #040404;
-    color: white;
-}
-/*********************** Icons Section END **********************/
 
-/* Center the gallery title */
+/*********************** IMAGE GALLERY **********************/
 h2 {
     text-align: center;
     font-size: 28px;
     margin-bottom: 20px;
 }
 
-/*********************** Band Images Start **********************/
-/* Grid Layout for Images */
-.image-grid {
+.image_grid {
     display: grid;
-    grid-template-columns: repeat(2, 1fr); 
-    gap: 20px; 
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
     width: 80%;
     margin: 0 auto;
 }
 
-/* Individual Image Containers */
-.image-container {
-    text-align: center; 
+.image_container {
+    text-align: center;
+    width: 90%;
+    height: 90%;
 }
 
-/* Image Styling */
-.image-container img {
-    width: 100%; 
-    height: auto;
-    max-width: 400px; 
+.image_container img {
+    width: 100%;
+    max-width: 400px;
     border-radius: 10px;
-    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
+    box-shadow: 0px 4px 6px black;
 }
 
-/* Title Styling */
-.image-container h3 {
+.image_container h3 {
     margin-bottom: 10px;
     font-size: 20px;
     color: black;
 }
-/*********************** Band Images END **********************/
 
-/*********************** Contact Form Start **********************/
-/* Form Container */
-.form-container {
+/*********************** CONTACT FORM **********************/
+.form_container {
     width: 40%;
     margin: 20px auto;
     padding: 20px;
-    background: rgba(0, 0, 0, 0.8);
+    background: black;
     color: white;
     text-align: center;
     border-radius: 10px;
-    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.3);
+    box-shadow: 0px 4px 6px black;
 }
 
-/* Form Styling (Stacking Fields) */
 form {
     display: flex;
     flex-direction: column;
-    gap: 15px; 
+    gap: 15px;
 }
 
-/* Labels */
 label {
     font-size: 16px;
     text-align: left;
 }
 
-/* Input Fields */
 input {
     padding: 10px;
     font-size: 16px;
     border-radius: 5px;
     border: 1px solid white;
-    width: 100%; 
+    width: 100%;
     box-sizing: border-box;
 }
 
-/* Submit Button */
-button {
-    margin-top: 15px; 
-    padding: 12px 15px;
-    font-size: 16px;
-    font-weight: bold;
-    border: none;
-    border-radius: 5px;
-    background: #f1c40f;
-    cursor: pointer;
-    transition: background 0.3s ease;
-}
-
-button:hover {
-    background: #e67e22;
-}
-
 /* Display Submitted Information */
-#formResult {
+#form_result {
     margin-top: 20px;
     padding: 10px;
     background: white;
@@ -399,5 +244,3 @@ button:hover {
     border-radius: 5px;
     display: none;
 }
-
-/*********************** Contact Form End **********************/
