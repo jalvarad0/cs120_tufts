@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content = "width=device-width, initial-scale=1.0">
+    <title> Problem 5 </title>
+</head>
+<body>
+    <h2>Enter your name please :D </h2>
+    <form>
+        <input type = "text" id = "name_input" placeholder = "Name: ">
+        <button type = "button" class = "el_button"> Hello </button>
+        <button type = "button" class = "el_button"> Good Bye </button>
+        <button type = "button" class = "el_button"> Greetings </button>
+    </form>
+
+    <script>
+        function speak(event) {
+            let name = document.getElementById("name_input").value.trim();
+            let prefix = event.target.textContent;
+            alert(prefix + " " + name);
+        }
+        /* We can access the onload method this way :) nice. */
+        window.onload = function() {
+            let buttons = document.querySelectorAll(".el_button");
+            /* We use the function call as taught in class. Hopefully this works. */
+            buttons.forEach(button => { button.addEventListener("click", speak);});
+            /* NICE. o7.*/
+        };
+    </script>
+</body>
+</html>

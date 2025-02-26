@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Problem 6</title>
+</head>
+<body>
+
+    <div>
+        <h2>Pick a state fam</h2>
+        <select id="best_states" size="5"></select>
+        <button onclick="add_to_table()">Add State</button>
+        <button onclick="clear_table()">Clear States</button>
+        <div id="states_table"></div>
+    </div>
+
+    <script>
+        const states = ["California", "New York", "Massachusetts", "Michigan", "Seattle"];
+        const state_handler = document.getElementById("best_states");
+
+        /* Let's lazily add the states to the table */
+        states.forEach(state => {let option = document.createElement("option"); option.textContent = state; state_handler.appendChild(option);});
+
+        /* Alright now lets have a function that adds these things to our table */
+        function add_to_table() {
+            let curr_state = state_handler.value; 
+            let selectedDiv = document.getElementById("states_table");
+
+            if (curr_state) {
+                let elem = document.createElement("p"); 
+                elem.textContent = curr_state;
+                selectedDiv.appendChild(elem);
+            }
+        }
+
+        function clear_table() {
+            document.getElementById("states_table").innerHTML = "";
+        }
+    </script>
+
+</body>
+</html>

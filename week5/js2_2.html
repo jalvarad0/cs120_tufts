@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Problem 2 </title>
+</head>
+<body onload = "">
+    <div id = "answer"></div>
+    <script>
+        function get_user_input() {
+            let user_input = prompt("Please type a sentence:  ");
+            let words = user_input.split(" ");
+            let output = document.getElementById("answer");
+            output.textContent = `Number of words: ${words.length}`
+        }
+        get_user_input();
+        </script>
+
+</body>
+</html>

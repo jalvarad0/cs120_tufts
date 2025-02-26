@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content = "width=device-width, initial-scale=1.0">
+    <title> Problem 3 </title>
+</head>
+<body>
+    <h2>Name List </h2>
+    <ul id="name_list"></ul>
+    <script>
+        let name_array = "Pat,Chris,Marlon,Ferncroft,Assunta";
+        let name_split_array = name_array.split(",");
+        let target = document.getElementById("name_list");
+
+        /* I think this is how it works? She said no while loop to we for loop */
+        for (let i = 0; i < name_split_array.length; i++){
+            let list_item = document.createElement("li");
+            list_item.textContent = name_split_array[i];
+            target.appendChild(list_item);
+        }
+
+        /* If this is actually how it works, this is pretty cool */
+    </script>
+</body>
+</html>
