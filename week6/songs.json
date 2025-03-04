@@ -1,0 +1,13 @@
+{
+        "songs": 
+        [
+                {"title": "Bohemian Rhapsody", "artist": "Queen", "year": 1975, "genre": ["Rock", "Progressive Rock"]},
+                {"title": "Hotel California", "artist": "Eagles", "year": 1976, "genre": ["Rock"]},
+                {"title": "Shape of You", "artist": "Ed Sheeran", "year": 2017, "genre": ["Pop"]},
+                {"title": "Blinding Lights", "artist": "The Weeknd", "year": 2019, "genre": ["Pop", "Synthwave"]},
+                {"title": "Lose Yourself", "artist": "Eminem", "year": 2002, "genre": ["Hip-Hop"]},
+                {"title": "Sicko Mode", "artist": "Travis Scott", "year": 2018, "genre": ["Hip-Hop", "Trap"]},
+                {"title": "Thunderstruck", "artist": "AC/DC", "year": 1990, "genre": ["Rock"]},
+                {"title": "Bad Guy", "artist": "Billie Eilish", "year": 2019, "genre": ["Pop", "Alternative"]}
+        ]
+}
