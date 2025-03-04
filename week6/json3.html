@@ -1,0 +1,37 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>json3</title>
+	<script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+
+	<style type="text/css">
+		body,html {font-size: 20px;}
+		li {font-size: 20px}
+	</style>
+</head>
+
+<body>
+	<script>
+	        $.get("https://jalvarad0.github.io/cs120_tufts/week6/songs.json", function( data ) {
+		        console.log('raw data\n'+ data)
+		        let json_str = JSON.stringify(data, null, 4); //data is a json object
+		        document.getElementById('json-data').innerHTML = json_str;
+		        console.log('string data\n'+ json_str)
+
+		        str = "<ul>";
+		        data.songs.forEach(function(song) { 
+		        str += `<li><strong>${song.title}</strong> -
+                                ${song.artist} <br>
+                                ${song.year} <br>
+                                ${song.genre.join(", ")}
+                                </li>`;
+		}) 
+	        str += "</ul>";
+	        document.getElementById('json-list').innerHTML = str;  
+	        })
+        </script>
+	<div id="json-data">&nbsp;</div>
+	<div id="json-list">&nbsp;</div>
+</body>
+</html>
