@@ -3,35 +3,45 @@
 <head>
 <meta charset="utf-8">
 <title>json3</title>
-	<script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
-
-	<style type="text/css">
-		body,html {font-size: 20px;}
-		li {font-size: 20px}
-	</style>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <style type="text/css">
+        body, html { font-size: 20px; }
+        li { font-size: 20px; }
+    </style>
 </head>
 
 <body>
-	<script>
-	        $.get("https://jalvarad0.github.io/cs120_tufts/week6/songs.json", function( data ) {
-		        console.log('raw data\n'+ data)
-		        let json_str = JSON.stringify(data, null, 4); //data is a json object
-		        document.getElementById('json-data').innerHTML = json_str;
-		        console.log('string data\n'+ json_str)
+    <select id="genre_selector"></select>
+    <button id="filter_button">Filter</button>
+    <div id="filtered_songs"></div> 
 
-		        str = "<ul>";
-		        data.songs.forEach(function(song) { 
-		        str += `<li><strong>${song.title}</strong> -
-                                ${song.artist} <br>
-                                ${song.year} <br>
-                                ${song.genre.join(", ")}
-                                </li>`;
-		}) 
-	        str += "</ul>";
-	        document.getElementById('json-list').innerHTML = str;  
-	        })
-        </script>
-	<div id="json-data">&nbsp;</div>
-	<div id="json-list">&nbsp;</div>
+    <script language="javascript">
+        // Lets grab the data locally first. Right now github is broken for me but fix me before submit. 
+        $.get("songs.json", function( data ) {
+            let genres = new Set();
+            data.songs.forEach(song => song.genre.forEach(g => genres.add(g)));
+
+            // Alright, now lets 
+            let dropdown = $("#genre_selector");
+            dropdown.append('<option value="">Select a Genre</option>');
+            [...genres].forEach(genre => {dropdown.append(`<option value="${genre}">${genre}</option>`);});
+        });
+
+        // We now set up the button so that we can filter
+        $("#filter_button").click(function() {  
+            //Having the button, we now extract the genre we selected.
+            let the_genre = $("#genre_selector").val();
+            //Lets now filter based off of the_genre val
+            $.get( "https://jalvarad0.github.io/cs120_tufts/week6/songs.json", function( data ) { //This isn't working. Check with TAs. It is getting blocked for some reason.
+                //In here lets package each elem in a list item
+                let filtered_songs = data.songs.filter( song => song.genre.includes(the_genre));
+                let elem = "<ul>";
+                filtered_songs.forEach(song => { elem += `<li>${song.title}</li>`; });
+                elem += "</ul>";
+                //Successfully created the element! LFG!
+                document.getElementById('filtered_songs').innerHTML = elem;
+            });
+        });
+    </script>
 </body>
 </html>
