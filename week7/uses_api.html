@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Using an API </title>
+</head>
+<body>
+    <!-- We first have to ask the user for a book to query -->
+    <label for = "user_input">What book should I search for:</label>
+    <input type = "text" id = "book_title" placeholder="Type here fam...">
+    <button onclick="query_book()">Submit</button>
+
+    <!-- Let's place the results in this div -->
+    <div id = "query_result"></div>
+    <!-- Need this for debugging -->
+    <div id = "converted_string"></div>
+
+    <script>
+        function query_book()
+        {
+            //Let's also grab the name of the book we want to query
+            let book_title = document.getElementById("book_title").value;
+            if (!book_title){
+                document.getElementById("query_result").textContent = "Please please please enter a book title."
+                return;
+            }
+            //We now have to figure out how to turn our input into what the API expext.
+            let converted_string = ".json?q=" + book_title.replace(/ /g, "+"); //This seems nasty. Maybe another way?
+            const API_URL = `https://openlibrary.org/search${converted_string}`;
+
+            // document.getElementById("converted_string").textContent = converted_string;
+            document.getElementById("converted_string").textContent = API_URL;
+            //We then want to fetch the data from API
+            fetch(API_URL)
+                .then(response =>response.json())
+                .then(data => {
+                    //Whoops needed to check this. So the bug I ran into was that I wasn't properly reading the response and I was erroring out. Need to catch
+                    //valid request but invalid read of the data structure. Noob.
+                    if (data.docs.length > 0){
+                        document.getElementById("query_result").textContent = `Title: ${data.docs[0].title} | Author: ${data.docs[0].author_name} 
+                                                                                | First Published: ${data.docs[0].first_publish_year}`;
+                    } else {
+                        document.getElementById("query_result").textContent = "Successful API call but book not found.";
+                    }
+                }) 
+                .catch(error => {
+                    console.error("Uhh we failed. Please don't get here. Cries in spanish.")
+                    document.getElementById("query_result").textContent = "Fail!" + error;
+                })
+        }
+    </script>
+</body>
