@@ -1,0 +1,72 @@
+/* Center the game */
+body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+}
+
+/* Grid container */
+.game_grid {
+    display: grid;
+    grid-template-columns: repeat(5, 50px);
+    gap: 5px;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+/* Individual letter boxes */
+.letter-box {
+    width: 50px;
+    height: 50px;
+    border: 2px solid black;
+    font-size: 24px;
+    font-weight: bold;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Shading the boxes */
+.correct_letter_and_spot {
+    background-color: green;
+    color: white;
+    border: 2px solid darkgreen;
+}
+
+.correct_letter {
+    background-color: rgb(231, 231, 135);
+    color: white;
+    border: 2px solid darkgoldenrod;
+}
+
+.incorrect {
+    background-color: gray;
+    color: white;
+    border: 2px solid darkgrey;
+}
+
+/* Keyboard settings */
+#keyboard-cont {
+    margin: 1rem 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+  
+#keyboard-cont div {
+    display: flex;
+}
+  
+.second-row {
+    margin: 0.5rem 0;
+}
+  
+.keyboard-button {
+    font-size: 1rem;
+    font-weight: 700;
+    padding: 0.5rem;
+    margin: 0 2px;
+    cursor: pointer;
+    text-transform: uppercase;
+    background-color: whitesmoke;
+}

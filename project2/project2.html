@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Wordle </title>
+    <link rel="stylesheet" href="stylesheet.css">
+</head>
+<body>
+    <!-- Header -->
+    <h1> OLIVE'S WORDLE</h1>
+
+    <!-- Game board  -->
+    <div id = "board_game" class = "game_grid">
+        <!-- All of my 5x5 cells will go here -->
+    </div>
+    <br>
+    <label for = "user_input" > What is your guess: </label>
+    <input type = "text" id = "user_guess" placeholder="Enter a 5-letter word" maxlength="5">
+    <button id = "submit_button" > Submit Guess</button>
+    <button id = "reset_button" > Reset Game</button>
+    <br><br><br>
+    <!-- Lets generate the keyboard here -->
+    <div id="keyboard-cont">
+        <div class="first-row">
+            <button class="keyboard-button">q</button>
+            <button class="keyboard-button">w</button>
+            <button class="keyboard-button">e</button>
+            <button class="keyboard-button">r</button>
+            <button class="keyboard-button">t</button>
+            <button class="keyboard-button">y</button>
+            <button class="keyboard-button">u</button>
+            <button class="keyboard-button">i</button>
+            <button class="keyboard-button">o</button>
+            <button class="keyboard-button">p</button>
+        </div>
+        <div class="second-row">
+            <button class="keyboard-button">a</button>
+            <button class="keyboard-button">s</button>
+            <button class="keyboard-button">d</button>
+            <button class="keyboard-button">f</button>
+            <button class="keyboard-button">g</button>
+            <button class="keyboard-button">h</button>
+            <button class="keyboard-button">j</button>
+            <button class="keyboard-button">k</button>
+            <button class="keyboard-button">l</button>
+        </div>
+        <div class="third-row">
+            <button class="keyboard-button">z</button>
+            <button class="keyboard-button">x</button>
+            <button class="keyboard-button">c</button>
+            <button class="keyboard-button">v</button>
+            <button class="keyboard-button">b</button>
+            <button class="keyboard-button">n</button>
+            <button class="keyboard-button">m</button>
+        </div>
+    </div>
+
+
+    <script>
+        let NUM_GUESSES = 0;
+        let MAX_GUESSES = 6; // We are doing 0 based guesses
+        let MAX_WORD_LENGTH = 5;
+        let THE_WORD = "OLIVE";
+        let GAME_WORDS = [];
+
+        /* Lets grab the game words for this session */
+        grab_words();
+
+        //Let's first create an 5x5 array and display it
+        function generate_grid() 
+        {
+            let board = document.getElementById("board_game");
+            board.innerHTML = ""; 
+
+            for (let row = 0; row < MAX_GUESSES; row++) {
+                for (let col = 0; col < MAX_WORD_LENGTH; col++){
+                    let box = document.createElement("div");
+                    box.className = "letter-box";
+                    box.id = `box-${row}-${col}`; // We need a way to uniquely identify the boxes
+                    board.appendChild(box);
+                }
+            }
+        }
+        generate_grid();
+        //Let's next populate 5 letters into the array
+        function game_loop()
+        {
+            /* We first get the users guess and convert it to uppercase for less work */
+            let user_guess = document.getElementById("user_guess").value.toUpperCase();
+            if (user_guess.length != MAX_WORD_LENGTH){
+                alert(`Please enter ${MAX_WORD_LENGTH} letter word!`);
+                return;
+            }
+            document.getElementById("user_guess").value = "";
+            /* Hard coding a response for now. Juan come back and fix me.*/
+            if (user_guess == THE_WORD) {
+                alert("YOU WIN! NICE :D!")
+            }
+
+            /* Let's set up hash map of our word to use for coloring boxes */
+            let hash_the_word = {};
+            for (let i = 0; i < MAX_WORD_LENGTH; i++){
+                hash_the_word[THE_WORD[i]] += 1;
+            }
+
+            /* This for loop will fill in the boxes and their colors */
+            for (let i = 0; i < MAX_WORD_LENGTH; i++) {
+                let box = document.getElementById(`box-${NUM_GUESSES}-${i}`);
+                box.textContent = user_guess[i];
+
+                /* Lets now update our hash map */
+                if (user_guess[i] in hash_the_word){
+                    hash_the_word[user_guess[i]] -= 1;
+
+                    /* Check if the position of the letter is correct */
+                    if (THE_WORD[i] == user_guess[i]){
+                        box.classList.add("correct_letter_and_spot");
+                    } else {
+                        box.classList.add("correct_letter");
+                    }
+
+                    /* Check if we have ran out of those letter and remove if so */
+                    if (hash_the_word[user_guess[i]] == 0){
+                        delete hash_the_word[user_guess[i]];
+                    }
+
+                } else { // Case where the letter is not in our hash
+                    box.classList.add("incorrect");
+                }
+            }
+
+            /* Let's now gray out the letters we used */
+            Array.from(user_guess).forEach((elem) => {
+                shade_used_letter(elem)
+            });
+
+            /* User guessed and we need to increment */
+            NUM_GUESSES ++;
+            /* Check if they have reached max number of guesses without getting it right */
+            if (NUM_GUESSES == MAX_GUESSES){
+                alert(`You lose! Whomp Whomp! The word was ${THE_WORD}`);
+            }
+        }
+
+        function reset_game()
+        {
+            NUM_GUESSES = 0;
+            generate_grid();
+            document.querySelectorAll(".keyboard-button").forEach(button => {
+                button.style.backgroundColor = "white";
+            });
+        }
+
+        function shade_used_letter(letter)
+        {
+            for (const elem of document.getElementsByClassName("keyboard-button")) {
+                if (elem.textContent === letter.toLowerCase()) {
+                    elem.style.backgroundColor = "gray";
+                    break;
+                }
+            }
+        }
+
+        /* This function will populate our word array */
+        function grab_words()
+        {
+            /* Lets query 30 words of length 5 from random-word-api */
+            const API_URL = `https://random-word-api.herokuapp.com/word?number=30&length=5`;
+
+            /* LETS FETCH BBY */
+            fetch(API_URL)
+                .then(response =>response.json())
+                .then(words => {
+                    /* Let's print out the json object to make sure we got valid words */
+                    GAME_WORDS = Array.from(words);
+                    let rand_num = Math.floor(Math.random() * 30);
+                    THE_WORD = GAME_WORDS[rand_num].toUpperCase();
+                    /* Leaving this here for debug */
+                    console.log(rand_num);
+                    console.log(THE_WORD);
+                    console.log(GAME_WORDS);
+                }) 
+                .catch(error => {
+                    console.error("Uhh we failed. Please don't get here. Cries in spanish.")
+                    document.getElementById("query_result").textContent = "Fail!" + error;
+                })
+        }
+
+        /* Down here we place the button event handlers */
+        document.getElementById("submit_button").addEventListener("click", game_loop);
+        document.getElementById("reset_button").addEventListener("click", reset_game);
+    </script>
+</body>
