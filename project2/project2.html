@@ -116,8 +116,10 @@
                     /* Check if the position of the letter is correct */
                     if (THE_WORD[i] == user_guess[i]){
                         box.classList.add("correct_letter_and_spot");
+                        shade_used_letter(user_guess[i], "green");
                     } else {
                         box.classList.add("correct_letter");
+                        shade_used_letter(user_guess[i], "gold");
                     }
 
                     /* Check if we have ran out of those letter and remove if so */
@@ -132,7 +134,7 @@
 
             /* Let's now gray out the letters we used */
             Array.from(user_guess).forEach((elem) => {
-                shade_used_letter(elem)
+                shade_used_letter(elem, "gray");
             });
 
             /* User guessed and we need to increment */
@@ -153,12 +155,24 @@
             grab_words(); // Refresh the words
         }
 
-        function shade_used_letter(letter)
-        {
+        /* This was a PAIN in the but because I didn't realize you couldn't just compare against colors.
+            one has to know the actual rbg colors. BLAH. */
+        function shade_used_letter(letter, color) {
             for (const elem of document.getElementsByClassName("keyboard-button")) {
-                if (elem.textContent === letter.toLowerCase()) {
-                    elem.style.backgroundColor = "gray";
-                    break;
+                if (elem.textContent.toLowerCase() === letter.toLowerCase()) {
+                let elem_color = window.getComputedStyle(elem).backgroundColor;
+                console.log(`Letter: ${letter}, Current Color: ${elem_color}`);
+
+                if (color === "green") {
+                    elem.style.backgroundColor = "rgb(0, 128, 0)";
+                } 
+                else if (color === "gold" && elem_color !== "rgb(0, 128, 0)") { 
+                    elem.style.backgroundColor = "rgb(255, 215, 0)"; 
+                } 
+                else if (elem_color === "rgb(245, 245, 245)") { 
+                    elem.style.backgroundColor = "rgb(128, 128, 128)"; 
+                }
+                break;
                 }
             }
         }
