@@ -63,6 +63,7 @@
         let MAX_WORD_LENGTH = 5;
         let THE_WORD = "OLIVE";
         let GAME_WORDS = [];
+        const initialKeyboard = document.getElementById("keyboard-cont").innerHTML; // Need this to be able to reset the keyboard
 
         /* Lets grab the game words for this session */
         grab_words();
@@ -153,6 +154,7 @@
                 button.style.backgroundColor = "white";
             });
             grab_words(); // Refresh the words
+            document.getElementById("keyboard-cont").innerHTML = initialKeyboard;
         }
 
         /* This was a PAIN in the but because I didn't realize you couldn't just compare against colors.
