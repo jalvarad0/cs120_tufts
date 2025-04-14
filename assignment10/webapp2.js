@@ -8,7 +8,8 @@ const app = express();
 app.use(body_parser.urlencoded({ extended: true }));
 
 // Our db connection string
-const connectionString = 'mongodb+srv://juanalvarado:RPCV4txMhi02sD1c@cluster0.qedn8qy.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0';
+// const connectionString = 'mongodb+srv://juanalvarado:RPCV4txMhi02sD1c@cluster0.qedn8qy.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0'; // heroku version below
+const connectionString = process.env.MONGO_URI;
 
 // Alright lets establish the connection to MongoDB
 let db, collection;
