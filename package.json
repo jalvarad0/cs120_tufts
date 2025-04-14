@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "start": "node assignment10/webapp2.js",
+    "start": "node webapp2.js",
     "webapp1": "nodemon webapp1.js",
     "webapp2": "nodemon webapp2.js"
   },
