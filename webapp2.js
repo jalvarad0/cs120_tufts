@@ -3,6 +3,7 @@ const body_parser = require('body-parser');
 const MongoClient = require('mongodb').MongoClient;
 const path = require('path');
 const app = express();
+const PORT = process.env.PORT || 3000;
 
 // Middleware as seen in https://zellwk.com/blog/crud-express-mongodb/. Will parse the data for us!
 app.use(body_parser.urlencoded({ extended: true }));
@@ -17,7 +18,7 @@ MongoClient.connect(connectionString)
         .then(client => {
                 db = client.db('assignment10');
                 collection = db.collection('places');
-                app.listen(3000, () => {
+                app.listen(PORT, () => {
                         console.log(`Server is running on http://localhost:3000`);
                 });
         })
