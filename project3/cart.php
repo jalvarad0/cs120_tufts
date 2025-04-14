@@ -7,7 +7,7 @@
 </head>
 <body>
 <header>
-        <h1>🧢 T-Shirt Central</h1>
+        <h1> T-Shirt Central</h1>
         <nav>
                 <a href="products.php">Products</a> |
                 <a href="cart.php">Cart</a> |
@@ -21,7 +21,7 @@
 
         <form action="thankyou.php" method="POST">
         <?php
-                // DB Connection
+                // Step 1: Reuse the connection structure that we were given in class.
                 $server = "localhost";
                 $userid = "uptxoagcom2z8";
                 $pw = "qd#j@41&1G1J";
@@ -32,9 +32,10 @@
                         die("Connection failed: " . $conn->connect_error);
                 }
 
-                // Grab products from DB
-                $sql = "SELECT * FROM products";
-                $result = $conn->query($sql);
+                // Step 2: Lets create the query and send it over. Debug by checking response. 
+                $query = "SELECT * FROM products";
+                echo "$query";
+                $result = $conn->query($query);
 
                 if ($result->num_rows > 0) {
                         while ($row = $result->fetch_assoc()) {

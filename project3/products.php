@@ -31,7 +31,7 @@
 <body>
 
 <header>
-        <h1>🧢 T-Shirt Central</h1>
+        <h1> T-Shirt Central</h1>
         <nav>
                 <a href="products.php">Products</a> |
                 <a href="cart.php">Cart</a> |
