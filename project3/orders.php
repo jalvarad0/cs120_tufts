@@ -1,23 +1,26 @@
 <?php
+        /* Lets setup the information we will use to setup our db connection */
         $server = "localhost";
         $userid = "uptxoagcom2z8";
         $pw = "qd#j@41&1G1J";
         $db = "dbs4nnkn5augyi";
 
+        /* Connect to the db! Please work :) */
         $conn = new mysqli($server, $userid, $pw, $db);
         if ($conn->connect_error) {
                 die("Connection failed: " . $conn->connect_error);
         }
 
-        // Get all orders, newest first
+        /* Lets grab all of the orders  */
         $sql = "SELECT * FROM orders ORDER BY order_date DESC";
         $orders_result = $conn->query($sql);
 
-        function getProduct($conn, $id) {
-        $stmt = $conn->prepare("SELECT name, price FROM products WHERE id = ?");
-        $stmt->bind_param("i", $id);
-        $stmt->execute();
-        return $stmt->get_result()->fetch_assoc();
+        /* Utilize https://phpdelusions.net/mysqli */
+        function get_prod($conn, $id) {
+                $stmt = $conn->prepare("SELECT name, price FROM products WHERE id = ?");
+                $stmt->bind_param("i", $id);
+                $stmt->execute();
+                return $stmt->get_result()->fetch_assoc();
         }
 ?>
 <!DOCTYPE html>
@@ -30,6 +33,7 @@
         <h1>Customer Orders</h1>
 
         <?php
+                /* Lets setup how we are going to display the orders that exist in our db */
                 if ($orders_result->num_rows > 0) {
                         while ($order = $orders_result->fetch_assoc()) {
                                 echo "<div style='border:1px solid #ccc; padding:10px; margin:10px 0'>";
@@ -38,13 +42,13 @@
 
                                 $total = 0;
 
-                                // Loop through up to 5 items
+                                /* We loop through all of the products we have in our db and echo out the results */
                                 for ($i = 1; $i <= 5; $i++) {
                                         $product_id = $order["item{$i}_id"];
                                         $qty = $order["item{$i}_qty"];
 
                                         if ($product_id && $qty) {
-                                                $product = getProduct($conn, $product_id);
+                                                $product = get_prod($conn, $product_id);
                                                 $name = $product['name'];
                                                 $price = $product['price'];
                                                 $cost = $price * $qty;
@@ -57,8 +61,8 @@
                                 echo "<strong>Total:</strong> $" . number_format($total, 2);
                                 echo "</div>";
                         }
-                } else {
-                echo "<p>No orders found.</p>";
+                } else { // REMINDER: No orders fam. Lets wipe our db and make sure we are correctly hitting this.
+                        echo "<p>No orders found.</p>";
                 }
 
                 $conn->close();

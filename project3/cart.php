@@ -21,14 +21,16 @@
 
         <form action="thankyou.php" method="POST">
         <?php
-                // Step 1: Reuse the connection structure that we were given in class.
+                /* Step 1: Establish communication with aliens -- Going delusional */
+                /* Lets setup the information we will use to setup our db connection */
                 $server = "localhost";
                 $userid = "uptxoagcom2z8";
                 $pw = "qd#j@41&1G1J";
                 $db = "dbs4nnkn5augyi";
 
+                /* Connect to the db! Please work :) */
                 $conn = new mysqli($server, $userid, $pw, $db);
-                if ($conn->connect_error) {
+                        if ($conn->connect_error) {
                         die("Connection failed: " . $conn->connect_error);
                 }
 
