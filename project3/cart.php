@@ -7,7 +7,7 @@
 </head>
 <body>
 <header>
-        <h1> T-Shirt Central</h1>
+        <h1>T-Shirt Central</h1>
         <nav>
                 <a href="products.php">Products</a> |
                 <a href="cart.php">Cart</a> |
@@ -21,40 +21,59 @@
 
         <form action="thankyou.php" method="POST">
         <?php
-                /* Step 1: Establish communication with aliens -- Going delusional */
-                /* Lets setup the information we will use to setup our db connection */
-                $server = "localhost";
-                $userid = "uptxoagcom2z8";
-                $pw = "qd#j@41&1G1J";
-                $db = "dbs4nnkn5augyi";
+                /* Lets see if our products page sent us anything! */
+                $product_ids = $_POST['product_ids'] ?? [];
+                $quantities = $_POST['quantities'] ?? [];
 
-                /* Connect to the db! Please work :) */
-                $conn = new mysqli($server, $userid, $pw, $db);
-                        if ($conn->connect_error) {
-                        die("Connection failed: " . $conn->connect_error);
-                }
-
-                // Step 2: Lets create the query and send it over. Debug by checking response. 
-                $query = "SELECT * FROM products";
-                echo "$query";
-                $result = $conn->query($query);
-
-                if ($result->num_rows > 0) {
-                        while ($row = $result->fetch_assoc()) {
-                        echo "<label>";
-                        echo "<input type='checkbox' name='product_ids[]' value='" . $row["id"] . "'>";
-                        echo $row["name"] . " - $" . $row["price"];
-                        echo " Quantity: <input type='number' name='quantities[" . $row["id"] . "]' min='1' max='10' value='1'>";
-                        echo "</label><br>";
-                }
+                
+                if (empty($product_ids)) { // Case where nothing was added.
+                        echo "<p>You haven't added anything to your cart yet.</p>";
                 } else {
-                        echo "No products found.";
-                }
+                        /* Step 1: Establish communication with aliens -- Going delusional */
+                        /* Lets setup the information we will use to setup our db connection */
+                        $server = "localhost";
+                        $userid = "uptxoagcom2z8";
+                        $pw = "qd#j@41&1G1J";
+                        $db = "dbs4nnkn5augyi";
 
-                $conn->close();
+                        /* Connect to the db! Please work :) */
+                        $conn = new mysqli($server, $userid, $pw, $db);
+                        if ($conn->connect_error) {
+                                die("Connection failed: " . $conn->connect_error);
+                        }
+                        
+                        /* So for each product, we want to calculate total cost and display to user + package submit form. Goodluck Juan :)*/
+                        foreach ($product_ids as $id) {
+                                
+                                // Lets first build out the query
+                                $qty = intval($quantities[$id] ?? 1);
+                                $stmt = $conn->prepare("SELECT name, price FROM products WHERE id = ?");
+                                $stmt->bind_param("i", $id);
+                                $stmt->execute();
+                                $result = $stmt->get_result();
+
+                                // With the query results, lets do the stuff if product exists
+                                if ($result->num_rows > 0) {
+                                        // Lets extact the data and make it variables for insertion
+                                        $product = $result->fetch_assoc();
+                                        $name = htmlspecialchars($product['name']);
+                                        $price = number_format($product['price'], 2);
+                                        $cost = number_format($product['price'] * $qty, 2);
+
+                                        // Insert the stuff and we should be happy
+                                        echo "<div>";
+                                        echo "<input type='hidden' name='product_ids[]' value='$id'>";
+                                        echo "<input type='hidden' name='quantities[$id]' value='$qty'>";
+                                        echo "<strong>$name</strong> - $qty x $$price = $$cost";
+                                        echo "</div>";
+                                }
+                        }
+                        
+                        // Goodbye db
+                        $conn->close();
+                        echo "<br><input type='submit' value='Check Out'>";
+                }
         ?>
-        <br>
-        <input type="submit" value="Check Out">
         </form>
 </main>
 
