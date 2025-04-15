@@ -30,7 +30,16 @@
     <title>All Orders</title>
 </head>
 <body>
-        <h1>Customer Orders</h1>
+        <header>
+                <h1>🧢 T-Shirt Central</h1>
+                <nav>
+                        <a href="products.php">Products</a> |
+                        <a href="cart.php">Cart</a> |
+                        <a href="orders.php">Orders</a>
+                </nav>
+                <hr>
+        </header>
+        <h2>Customer Orders</h>
 
         <?php
                 /* Lets setup how we are going to display the orders that exist in our db */
