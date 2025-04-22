@@ -2,7 +2,7 @@
 const fs = require('fs'); 
 const readline = require('readline');
 const MongoClient = require('mongodb').MongoClient
-const connectionString = 'mongodb+srv://juanalvarado:RPCV4txMhi02sD1c@cluster0.qedn8qy.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0' //Got this from Atlas
+const connectionString = 'mongodb+srv://juanalvarado:0nrBwY2mFhM0Qtat@cluster0.qedn8qy.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0' //Got this from Atlas
 const locations = {}; // We will use this to construct our entires
 
 // We make it async as shown in lecture 
